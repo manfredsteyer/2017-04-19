@@ -13,9 +13,11 @@
 <div class="control-group">
     <button class="btn btn-default" (click)="search()">Search</button>
 </div>
-
+<!--
+    [ngClass]="{ 'active': f == selectedFlight }"
+-->
 <table class="table table-striped">
-    <tr *ngFor="let f of flights">
+    <tr *ngFor="let f of flights" [ngStyle]="{ 'background-color': (f == selectedFlight) ? 'orange' : '' }">
         <td>{{f.id}}</td>
         <td>{{f.from}}</td>
         <td>{{f.to}}</td>

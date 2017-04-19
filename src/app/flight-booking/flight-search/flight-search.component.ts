@@ -1,5 +1,6 @@
 import { Flight } from './../../entities/flight';
 import { Component, OnInit } from '@angular/core';
+import { Http, Headers, URLSearchParams } from "@angular/http";
 
 @Component({
     selector: 'flight-search',
@@ -12,7 +13,8 @@ export class FlightSearchComponent implements OnInit {
     flights: Array<Flight> = [];
     selectedFlight: Flight;
 
-    constructor() { }
+    constructor(private http: Http) { 
+    }
 
     ngOnInit() { 
         console.debug('Komponente ist jetzt da!');
@@ -20,29 +22,26 @@ export class FlightSearchComponent implements OnInit {
 
     search(): void {
 
-        this.flights.push({
-            id: 4711,
-            from: 'Graz',
-            to: 'Nürnberg',
-            date: '2017-04-18T18:00:00+02:00'
-        });      
-
-
-        this.flights.push({
-            id: 4712,
-            from: 'Nürnberg',
-            to: 'Graz',
-            date: '2017-04-21T18:00:00+02:00'
-        });      
-
-
-        this.flights.push({
-            id: 4713,
-            from: 'Nürnberg',
-            to: 'Mallorca',
-            date: '2017-04-19T18:00:00+02:00'
-        });      
-
+        let url = 'http://www.angular.at/api/flight';
+        let headers = new Headers();
+        headers.set('Accept', 'application/json');
+        
+        let search = new URLSearchParams();
+        search.set('from', this.from);
+        search.set('to', this.to);
+ 
+        this
+            .http
+            .get(url, { search, headers })
+            .map(resp => resp.json())
+            .subscribe(
+                flights => {
+                    this.flights = flights;
+                },
+                err => {
+                    console.error('Fehler beim Laden', err);
+                }
+            )
     }
 
     select(f: Flight): void {
