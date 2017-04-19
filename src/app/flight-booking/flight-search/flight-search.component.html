@@ -1,0 +1,30 @@
+<h1>Flight Search!</h1>
+
+<div class="control-group">
+    <label>From:</label>
+    <input [(ngModel)]="from" class="form-control">
+</div>
+
+<div class="control-group">
+    <label>To:</label>
+    <input [(ngModel)]="to" class="form-control">
+</div>
+
+<div class="control-group">
+    <button class="btn btn-default" (click)="search()">Search</button>
+</div>
+
+<table class="table table-striped">
+    <tr *ngFor="let f of flights">
+        <td>{{f.id}}</td>
+        <td>{{f.from}}</td>
+        <td>{{f.to}}</td>
+        <td>{{f.date | date:'dd.MM.yyyy HH:mm' }}</td>
+        <td><a (click)="select(f)">Select</a></td>
+    </tr>
+</table>
+
+<pre>Warenkorb
+-------------------
+{{ selectedFlight | json }}    
+</pre>    
