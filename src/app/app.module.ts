@@ -1,3 +1,5 @@
+import { FlightBookingModule } from './flight-booking/flight-booking.module';
+import { CityPipe } from './shared/pipes/city.pipe';
 import { BASE_URL } from './app.tokens';
 import { FlightService } from './flight-booking/flight.service';
 import { FlightSearchComponent } from './flight-booking/flight-search/flight-search.component';
@@ -12,10 +14,11 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    FlightBookingModule
   ],
   declarations: [
-    AppComponent, FlightSearchComponent
+    AppComponent
   ],
   providers: [
     //FlightService
