@@ -10,6 +10,7 @@ import { HttpModule } from '@angular/http';
 import { FlightBookingModule } from '../flight-booking.module';
 import { TestBed, async } from '@angular/core/testing';
 
+
 import 'rxjs/add/operator/map';
 
 
@@ -64,6 +65,13 @@ describe('FlightSearchComponent', async() => {
     expect(comp.flights.length).toBe(0);
   }));
   
+  it('should not have any flight initially', async(() => {
+    const fixture = TestBed.createComponent(FlightSearchComponent);
+    const debug = fixture.debugElement;
+    
+    
+  }));
+
   it('should load no flights without from and/or to', async(() => {
     const fixture = TestBed.createComponent(FlightSearchComponent);
     const comp = fixture.componentInstance;
