@@ -15,6 +15,12 @@ export class FlightSearchComponent implements OnInit {
     flights: Array<Flight> = [];
     selectedFlight: Flight;
 
+    basket: any = {
+        "3": true,
+        "4": false,
+        "5": true
+    };
+
     constructor(private flightService: FlightService) { 
         console.debug('Manfred war hier.... You\'ve been haaaaacked!');
     }

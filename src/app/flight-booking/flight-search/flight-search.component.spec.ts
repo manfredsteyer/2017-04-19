@@ -21,7 +21,7 @@ let dummyFlightService = {
   }
 }
 
-describe('FlightSearchComponent', () => {
+describe('FlightSearchComponent', async() => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -64,7 +64,7 @@ describe('FlightSearchComponent', () => {
     expect(comp.flights.length).toBe(0);
   }));
   
-  it('should load no flights without from and/or to', (done: Function) => {
+  it('should load no flights without from and/or to', async(() => {
     const fixture = TestBed.createComponent(FlightSearchComponent);
     const comp = fixture.componentInstance;
 
@@ -83,14 +83,14 @@ describe('FlightSearchComponent', () => {
       })
       .then(() => {         // finally
         expect(ok).toBeFalsy();
-        done();
+        //done();
       });
 
 
-  });
+  }));
 
 
-  it('should load flights with from and to', (done: Function) => {
+  it('should load flights with from and to', async(() => {
     const fixture = TestBed.createComponent(FlightSearchComponent);
     const comp = fixture.componentInstance;
 
@@ -111,11 +111,11 @@ describe('FlightSearchComponent', () => {
       .then(() => {         // finally
         expect(ok).toBeTruthy();
 
-        done();
+        
       });
 
 
-  })
+  }))
 
 
 

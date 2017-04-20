@@ -1,3 +1,4 @@
+import { FlightCardComponent } from './flight-search/flight-card.component';
 import { FlightService } from './flight.service';
 import { FlightSearchComponent } from './flight-search/flight-search.component';
 import { SharedModule } from './../shared/shared.module';
@@ -10,7 +11,7 @@ import { NgModule } from '@angular/core';
         FormsModule, CommonModule, SharedModule
     ],
     declarations: [
-        FlightSearchComponent
+        FlightSearchComponent, FlightCardComponent
     ],
     providers: [
         /* FlightService */
