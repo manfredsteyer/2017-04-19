@@ -23,18 +23,28 @@ export class FlightSearchComponent implements OnInit {
         console.debug('Komponente ist jetzt da!');
     }
 
-    search(): void {
+    search(): Promise<Flight[]> {
 
-        this.flightService
-            .find(this.from, this.to)
-            .subscribe(
-                flights => {
-                    this.flights = flights;
-                },
-                err => {
-                    console.error('Fehler beim Laden', err);
-                }
-            )
+        if (!this.from || !this.to) {
+            return Promise.reject('from and to expected');
+        }
+
+        return new Promise<Flight[]>((resolve: Function, reject: Function) => {
+            this.flightService
+                .find(this.from, this.to)
+                .subscribe(
+                    flights => {
+                        this.flights = flights;
+                        resolve(flights);
+                    },
+                    err => {
+                        console.error('Fehler beim Laden', err);
+                        reject(err);
+                    }
+                );
+
+        });
+
     }
 
     select(f: Flight): void {
