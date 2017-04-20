@@ -6,6 +6,7 @@ import { Http, Headers, URLSearchParams, ResponseContentType } from "@angular/ht
 @Component({
     selector: 'flight-search',
     templateUrl: './flight-search.component.html',
+    styleUrls: ['./flight-search.component.css'],
     providers: [FlightService]
 })
 export class FlightSearchComponent implements OnInit {
