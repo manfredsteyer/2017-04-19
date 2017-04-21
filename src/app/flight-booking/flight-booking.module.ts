@@ -1,3 +1,4 @@
+import { FlightBookingComponent } from './flight-booking.component';
 import { FlightEditComponent } from './flight-edit/flight-edit.component';
 import { PassengerSearchComponent } from './passenger-search/passenger-search.component';
 import { FlightBookingRouterModule } from './flight-booking.routes';
@@ -20,6 +21,7 @@ import { NgModule } from '@angular/core';
         FlightBookingRouterModule
     ],
     declarations: [
+        FlightBookingComponent,
         FlightEditComponent,
         PassengerSearchComponent,
         FlightSearchComponent, 
@@ -28,7 +30,7 @@ import { NgModule } from '@angular/core';
         LookaheadComponent
     ],
     providers: [
-        /* FlightService */
+        FlightService
     ],
     exports: [
     ]

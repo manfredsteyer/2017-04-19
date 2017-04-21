@@ -4,7 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 @Component({
     selector: 'flight-edit',
     template: `
-        <h1>Flight Edit<</h1>
+        <h1>Flight Edit</h1>
         <p>
             Id: {{id}}
         </p>
@@ -27,5 +27,10 @@ export class FlightEditComponent implements OnInit {
             this.id = p['id'];
             this.showDetails = p ['showDetails'];
         });
+
+        this.route.paramMap.subscribe(x => {
+            console.debug(x.get('x'));
+            console.debug(x.getAll('x'));
+        })
     }
 }

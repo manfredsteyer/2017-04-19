@@ -1,3 +1,4 @@
+import { FlightHistoryComponent } from './flight-history/flight-history.component';
 import { HomeComponent } from './home/home.component';
 import { AppRouterModule } from './app.routes';
 import { LookaheadComponent } from './lookahead/lookahead.component';
@@ -22,6 +23,7 @@ import { AppComponent } from './app.component';
     AppRouterModule
   ],
   declarations: [
+    FlightHistoryComponent,
     HomeComponent,
     AppComponent
   ],

@@ -7,13 +7,13 @@ import { Http, Headers, URLSearchParams, ResponseContentType } from "@angular/ht
     selector: 'flight-search',
     templateUrl: './flight-search.component.html',
     styleUrls: ['./flight-search.component.css'],
-    providers: [FlightService]
+    
 })
 export class FlightSearchComponent implements OnInit {
     
     from: string;
     to: string;
-    flights: Array<Flight> = [];
+    // flights: Array<Flight> = [];
     selectedFlight: Flight;
 
     basket: any = {
@@ -24,6 +24,11 @@ export class FlightSearchComponent implements OnInit {
 
     constructor(private flightService: FlightService) { 
         console.debug('Manfred war hier.... You\'ve been haaaaacked!');
+    }
+
+    // comp.flights
+    get flights() {
+        return this.flightService.flights;
     }
 
     ngOnInit() { 
@@ -37,19 +42,7 @@ export class FlightSearchComponent implements OnInit {
         }
 
         return new Promise<Flight[]>((resolve: Function, reject: Function) => {
-            this.flightService
-                .find(this.from, this.to)
-                .subscribe(
-                    flights => {
-                        this.flights = flights;
-                        resolve(flights);
-                    },
-                    err => {
-                        console.error('Fehler beim Laden', err);
-                        reject(err);
-                    }
-                );
-
+            this.flightService.find(this.from, this.to);
         });
 
     }

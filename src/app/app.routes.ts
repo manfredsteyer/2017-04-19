@@ -1,3 +1,4 @@
+import { FlightHistoryComponent } from './flight-history/flight-history.component';
 import { ReactiveFlightSearchComponent } from './flight-booking/reactive-flight-search/reactive-flight-search.component';
 import { LookaheadComponent } from './lookahead/lookahead.component';
 import { PassengerSearchComponent } from './flight-booking/passenger-search/passenger-search.component';
@@ -14,6 +15,11 @@ const APP_ROUTES: Routes = [
     {
         path: 'home',
         component: HomeComponent
+    },
+    {
+        path: 'history',
+        component: FlightHistoryComponent,
+        outlet: 'aux'
     },
     {
         path: '**',

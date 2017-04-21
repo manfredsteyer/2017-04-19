@@ -1,13 +1,19 @@
 <nav class="navbar navbar-default">
     <ul class="nav navbar-nav">
         <li><a [routerLink]="['/home']">Home</a></li> 
-        <li><a [routerLink]="['/flight-search']">Flight Search</a></li> 
-        <li><a [routerLink]="['/reactive-flight-search']">Reactive Flight Search</a></li> 
+        <li><a [routerLink]="['/flight-booking', {x:1,y:2}, 'flight-search', {x:7,y:8}]">Flight Booking</a></li> 
         <li><a [routerLink]="['/lookahead']">Lookahead</a></li>         
-        <li><a [routerLink]="['/passenger-search']">Passenger Search</a></li>         
+        <li><a [routerLink]="[{outlets: {aux: 'history'}}]">Show History</a></li>       
+        <li><a [routerLink]="[{outlets: {aux: null}}]">Hide History</a></li>       
+        
     </ul>
 </nav>
 
 <div class="container">
   <router-outlet></router-outlet>
+  <hr>
+</div>
+
+<div class="container">
+  <router-outlet name="aux"></router-outlet>
 </div>
