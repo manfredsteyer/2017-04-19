@@ -1,5 +1,5 @@
 import { CityValidator } from './../../shared/validators/city.validator';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { FlightService } from './../flight.service';
 import { Flight } from './../../entities/flight';
 import { Component, OnInit } from '@angular/core';
@@ -24,6 +24,17 @@ export class ReactiveFlightSearchComponent implements OnInit {
         "5": true
     };
 
+    formsMetadata = [
+        {
+            name: 'from',
+            label: 'From'
+        },
+        {
+            name: 'to',
+            label: 'To'
+        }
+    ];
+
     constructor(
         private flightService: FlightService,
         private fb: FormBuilder) { 
@@ -46,7 +57,12 @@ export class ReactiveFlightSearchComponent implements OnInit {
                 ],
                 to: [
                     'Hamburg'
-                ]
+                ],
+                furtherOptions: fb.group({
+                    direct: [false],
+                    oneWay: [false]
+                }),
+                stopOvers: fb.array([])
             });
 
             this.filter.validator = Validators.compose([CityValidator.validateRoundTrip]);
@@ -60,6 +76,15 @@ export class ReactiveFlightSearchComponent implements OnInit {
                 .valueChanges
                 .subscribe(changes => console.debug(changes));
 
+    }
+
+    addStopover() {
+
+        let stopOvers = this.filter.controls['stopOvers'] as FormArray;
+        stopOvers.push(this.fb.group({
+            city: [''],
+            duration: [''],
+        }));
     }
 
     ngOnInit() { 

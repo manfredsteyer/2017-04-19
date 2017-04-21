@@ -2,6 +2,17 @@
 
 <form [formGroup]="filter">
 
+    <h2>Dynamic</h2>
+
+    <div *ngFor="let item of formsMetadata" class="control-group">
+        <label>{{item.label}}</label>
+
+        <input [formControlName]="item.name" class="form-control">
+    </div>
+
+
+    <h2>Static</h2>
+
     <div *ngIf="filter.hasError('roundTrip')">
         Rundflüge sind nicht erlaubt.
     </div>        
@@ -55,6 +66,23 @@
         <label>To:</label>
         <input name="to" formControlName="to" class="form-control">
     </div>
+
+    <div formGroupName="furtherOptions">
+        <label>FurhterOptions</label>
+        <div>
+            <input type="checkbox" formControlName="direct">
+            Direct
+        </div>
+        <div>
+            <input type="checkbox"  formControlName="oneWay">
+            Oneway
+        </div>
+    </div>
+
+    <div *ngFor="let stopOver of filter.controls['stopOvers'].controls" [formGroup]="stopOver">
+        <input formControlName="city"><input formControlName="duration" style="width:50px">
+    </div>
+    <button (click)="addStopover()">Add</button>
 
     <div class="control-group">
         <button class="btn btn-default" (click)="search()">Search</button>

@@ -1,3 +1,4 @@
+import { LookaheadComponent } from './lookahead/lookahead.component';
 import { FlightBookingModule } from './flight-booking/flight-booking.module';
 import { CityPipe } from './shared/pipes/city.pipe';
 import { BASE_URL } from './app.tokens';
