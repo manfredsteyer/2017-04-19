@@ -1,3 +1,6 @@
+import { FlightEditComponent } from './flight-edit/flight-edit.component';
+import { PassengerSearchComponent } from './passenger-search/passenger-search.component';
+import { FlightBookingRouterModule } from './flight-booking.routes';
 import { LookaheadComponent } from './../lookahead/lookahead.component';
 import { ReactiveFlightSearchComponent } from './reactive-flight-search/reactive-flight-search.component';
 import { FlightCardComponent } from './flight-search/flight-card.component';
@@ -13,9 +16,12 @@ import { NgModule } from '@angular/core';
         FormsModule, 
         ReactiveFormsModule, 
         CommonModule, 
-        SharedModule
+        SharedModule,
+        FlightBookingRouterModule
     ],
     declarations: [
+        FlightEditComponent,
+        PassengerSearchComponent,
         FlightSearchComponent, 
         FlightCardComponent, 
         ReactiveFlightSearchComponent,
@@ -25,9 +31,6 @@ import { NgModule } from '@angular/core';
         /* FlightService */
     ],
     exports: [
-        FlightSearchComponent, 
-        ReactiveFlightSearchComponent,
-        LookaheadComponent
     ]
 })
 export class FlightBookingModule { }

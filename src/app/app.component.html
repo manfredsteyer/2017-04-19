@@ -1,12 +1,13 @@
+<nav class="navbar navbar-default">
+    <ul class="nav navbar-nav">
+        <li><a [routerLink]="['/home']">Home</a></li> 
+        <li><a [routerLink]="['/flight-search']">Flight Search</a></li> 
+        <li><a [routerLink]="['/reactive-flight-search']">Reactive Flight Search</a></li> 
+        <li><a [routerLink]="['/lookahead']">Lookahead</a></li>         
+        <li><a [routerLink]="['/passenger-search']">Passenger Search</a></li>         
+    </ul>
+</nav>
+
 <div class="container">
-  <h1>Highsophisticed Flight App</h1>
-
-  <lookahead></lookahead>
-
-<!--
-  <reactive-flight-search></reactive-flight-search>
--->
-<!--  
-  <flight-search></flight-search>
--->
+  <router-outlet></router-outlet>
 </div>

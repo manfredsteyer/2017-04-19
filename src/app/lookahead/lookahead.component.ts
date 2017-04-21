@@ -36,6 +36,8 @@ export class LookaheadComponent implements OnInit {
                             .do(v => this.loading = true)
                             .switchMap(name => this.load(name))
                             .do(v => this.loading = false);
+
+                            
     }
 
     load(from: string)  {

@@ -1,3 +1,5 @@
+import { HomeComponent } from './home/home.component';
+import { AppRouterModule } from './app.routes';
 import { LookaheadComponent } from './lookahead/lookahead.component';
 import { FlightBookingModule } from './flight-booking/flight-booking.module';
 import { CityPipe } from './shared/pipes/city.pipe';
@@ -16,9 +18,11 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    FlightBookingModule
+    FlightBookingModule,
+    AppRouterModule
   ],
   declarations: [
+    HomeComponent,
     AppComponent
   ],
   providers: [
