@@ -1,8 +1,8 @@
-<h1>Flight Search!</h1>
+<h1>Reactive Flight Search!</h1>
 
-<form #f="ngForm" roundTrip>
+<form [formGroup]="filter">
 
-    <div *ngIf="f?.hasError('roundTrip')">
+    <div *ngIf="filter.hasError('roundTrip')">
         Rundflüge sind nicht erlaubt.
     </div>        
 
@@ -10,48 +10,42 @@
         <label>From:</label>
         <input 
             name="from" 
-            [(ngModel)]="from" 
             class="form-control"
-            asyncCity
-            required
-            minlength="3"
-            maxlength="30"
-            city="Graz,Hamburg,Nürnberg,München,Berlin,Frankfurt"
-            pattern="[A-Za-zöäüßÖÄÜ]*">
+            formControlName="from">
     
 
-            <div *ngIf="!f?.controls['from']?.valid && !f?.controls['from']?.pending">
+            <div *ngIf="!filter.controls['from'].valid && !filter.controls['from'].pending">
                 Fehler ...
-                <pre>{{ f?.controls['from']?.errors | json }}</pre>
+                <pre>{{ filter.controls['from'].errors | json }}</pre>
             </div>
 
-            <div *ngIf="f?.controls['from']?.hasError('required')">
+            <div *ngIf="filter.controls['from'].hasError('required')">
                 Required!
             </div>
 
-            <div *ngIf="f?.controls['from']?.hasError('city')">
+            <div *ngIf="filter.controls['from'].hasError('city')">
                 City!
             </div>
 
 
-            <div *ngIf="f?.controls['from']?.hasError('minlength')">
+            <div *ngIf="filter.controls['from'].hasError('minlength')">
                 Minelength!
             </div>
 
-            <div *ngIf="f?.controls['from']?.hasError('maxlength')">
+            <div *ngIf="filter.controls['from'].hasError('maxlength')">
                 Maxlength!
             </div>
 
 
-            <div *ngIf="f?.controls['from']?.hasError('pattern')">
+            <div *ngIf="filter.controls['from'].hasError('pattern')">
                 Pattern!
             </div>
 
-            <div *ngIf="f?.controls['from']?.pending">
+            <div *ngIf="filter.controls['from'].pending">
                 <marquee direction="down">Es wird gerade validiert.</marquee>
             </div>
 
-            <div *ngIf="f?.controls['from']?.hasError('asyncCity')">
+            <div *ngIf="filter.controls['from'].hasError('asyncCity')">
                 Async City!
             </div>
     
@@ -59,7 +53,7 @@
 
     <div class="control-group">
         <label>To:</label>
-        <input name="to" [(ngModel)]="to" class="form-control">
+        <input name="to" formControlName="to" class="form-control">
     </div>
 
     <div class="control-group">
@@ -82,7 +76,7 @@
 -->
 <!--
 <table class="table table-striped">
-    <tr *ngFor="let f of flights" [ngStyle]="{ 'background-color': (f == selectedFlight) ? 'orange' : '' }">
+    <tr *ngFor="let f of flights" [ngStyle]="{ 'background-color': (f == selectedFlight)  'orange' : '' }">
         <td>{{f.id}}</td>
         <td>{{f.from | city:'short' }}</td>
         <td>{{f.to | city:'long' }}</td>
